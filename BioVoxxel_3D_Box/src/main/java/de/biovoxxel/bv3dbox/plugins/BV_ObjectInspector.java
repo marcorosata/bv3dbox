@@ -315,14 +315,14 @@ public class BV_ObjectInspector implements Cancelable {
 			binaryInput_1.close();
 			log.debug("End convert " + primary_ImagePlus.getTitle() + " to connected components");
 			
-		} else if (primary_ImagePlus.getBitDepth() != 24) {
+		} else if (primary_ImagePlus.getBitDepth() == 8 || primary_ImagePlus.getBitDepth() == 16 || primary_ImagePlus.getBitDepth() == 32) {
 			
 			labels_1_gpu = clij2.push(primary_ImagePlus);
 			log.debug("Pushed to GPU = " + labels_1_gpu);
 			
 		} else {
 			
-			JOptionPane.showMessageDialog(null, "Wrong input image format\nNeeds to be of type gray-scale label mask or 8-bit binary", "Wrong image type", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Wrong input image format\nNeeds to be of type gray-scale label mask (8-bit, 16-bit, or 32-bit) or 8-bit binary", "Wrong image type", JOptionPane.WARNING_MESSAGE);
 			return;
 			
 		}
@@ -340,14 +340,14 @@ public class BV_ObjectInspector implements Cancelable {
 			binaryInput_2.close();
 			log.debug("End convert " + secondary_ImagePlus.getTitle() + " to connected components");
 			
-		} else if (secondary_ImagePlus.getBitDepth() != 24) {
+		} else if (secondary_ImagePlus.getBitDepth() == 8 || secondary_ImagePlus.getBitDepth() == 16 || secondary_ImagePlus.getBitDepth() == 32) {
 			
 			labels_2_gpu = clij2.push(secondary_ImagePlus);
 			log.debug("Pushed to GPU = " + labels_2_gpu);
 			
 		} else {
 			
-			JOptionPane.showMessageDialog(null, "Wrong input image format\nNeeds to be of type gray-scale label mask or 8-bit binary", "Wrong image type", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Wrong input image format\nNeeds to be of type gray-scale label mask (8-bit, 16-bit, or 32-bit) or 8-bit binary", "Wrong image type", JOptionPane.WARNING_MESSAGE);
 			return;
 			
 		}
